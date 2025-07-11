@@ -12,5 +12,10 @@ public class Weapon {
     private final String name;
     private final int force;
     private final WeaponType type;
+
+    public Weapon(String name, int force) {
+        this(name, force, null);
+    }
+
 }
 

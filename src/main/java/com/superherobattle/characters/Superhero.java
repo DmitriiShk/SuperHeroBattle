@@ -22,12 +22,12 @@ public class Superhero extends Character {
 
     @Override
     public int countForce() {
-        return type.getBaseForce() + weapon.getForce();
+        return type.getBaseForce() + (weapon != null ? weapon.getForce() : 0);
     }
 
     @Override
     public int countProtection() {
-        return type.getBaseDefense() + protection.getLevel();
+        return type.getBaseDefense() + (protection != null ? protection.getLevel() : 0);
     }
 }
 

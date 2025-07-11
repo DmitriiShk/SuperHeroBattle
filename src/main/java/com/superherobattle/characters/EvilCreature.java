@@ -1,6 +1,8 @@
 package com.superherobattle.characters;
 
 import com.superherobattle.enums.VillainType;
+import com.superherobattle.items.Protection;
+import com.superherobattle.items.Weapon;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +10,8 @@ import lombok.Setter;
 @Setter
 public class EvilCreature extends Character {
     private VillainType type;
+    private Weapon weapon;
+    private Protection protection;
 
     public EvilCreature(VillainType type) {
         super(type.name());
@@ -16,12 +20,17 @@ public class EvilCreature extends Character {
 
     @Override
     public int countForce() {
-        return type.getBaseForce();
+        int baseForce = type.getBaseForce();
+        int weaponForce = (weapon != null) ? weapon.getForce() : 0;
+        return baseForce + weaponForce;
     }
 
     @Override
     public int countProtection() {
-        return type.getBaseDefense();
+        int baseDefense = type.getBaseDefense();
+        int protectionLevel = (protection != null) ? protection.getLevel() : 0;
+        return baseDefense + protectionLevel;
     }
 }
+
 

@@ -6,20 +6,19 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum WeaponType {
-    // Marvel
-    REPULSOR_BLAST(5),        // Железный человек
-    MJOLNIR(8),               // Тор
-    WEB_SHOOTER(3),           // Человек-паук
-    SHIELD(4),                // Капитан Америка
-    ENERGY_BLAST(6),          // Халк (условно)
+    REPULSOR_BLAST("Repulsor Blast", 5),
+    MJOLNIR("Mjolnir", 8),
+    WEB_SHOOTER("Web Shooter", 3),
+    SHIELD("Shield", 4),
+    ENERGY_BLAST("Energy Blast", 6),
+    BLASTERS("Blasters", 4),
+    BOOMERANG("Boomerang", 3),
+    POWER_RING("Power Ring", 9),
+    CLAW("Claw", 5),
+    BLASTER("Blaster", 6);
 
-    // DC
-    BOOMERANG(3),             // Капитан Бумеранг
-    LASSO_OF_TRUTH(7),        // Чудо-женщина
-    POWER_RING(9),            // Зеленый Фонарь
-    BATARANG(4),              // Бэтмен
-    KRYPTONITE(10);           // Криптонит (слабость Супермена)
-
+    private final String name;
     private final int force;
 }
+
 

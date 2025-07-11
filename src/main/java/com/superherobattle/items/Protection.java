@@ -12,5 +12,10 @@ public class Protection {
     private final String name;
     private final int level;
     private final ProtectionType type;
+
+    public Protection(String name, int level) {
+        this(name, level, null);
+    }
+
 }
 
