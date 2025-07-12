@@ -1,10 +1,5 @@
 package com.superherobattle.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@Getter
-@AllArgsConstructor
 public enum WeaponType {
     REPULSOR_BLAST("Repulsor Blast", 5),
     MJOLNIR("Mjolnir", 8),
@@ -19,6 +14,21 @@ public enum WeaponType {
 
     private final String name;
     private final int force;
+
+    WeaponType(String name, int force) {
+        this.name = name;
+        this.force = force;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getForce() {
+        return force;
+    }
 }
+
+
 
 

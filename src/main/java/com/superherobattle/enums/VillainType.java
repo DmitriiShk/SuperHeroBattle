@@ -1,10 +1,5 @@
 package com.superherobattle.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@Getter
-@AllArgsConstructor
 public enum VillainType {
     THANOS("Thanos", WeaponType.POWER_RING, ProtectionType.ARMOR, 10, 9),
     LOKI("Loki", WeaponType.BOOMERANG, ProtectionType.FORCE_FIELD, 7, 6),
@@ -17,6 +12,36 @@ public enum VillainType {
     private final ProtectionType protectionType;
     private final int baseForce;
     private final int baseDefense;
+
+    VillainType(String displayName, WeaponType weaponType, ProtectionType protectionType, int baseForce, int baseDefense) {
+        this.displayName = displayName;
+        this.weaponType = weaponType;
+        this.protectionType = protectionType;
+        this.baseForce = baseForce;
+        this.baseDefense = baseDefense;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public WeaponType getWeaponType() {
+        return weaponType;
+    }
+
+    public ProtectionType getProtectionType() {
+        return protectionType;
+    }
+
+    public int getBaseForce() {
+        return baseForce;
+    }
+
+    public int getBaseDefense() {
+        return baseDefense;
+    }
 }
+
+
 
 

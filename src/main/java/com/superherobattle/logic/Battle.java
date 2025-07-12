@@ -17,24 +17,35 @@ public class Battle {
         LoggerUtil.log(a.getName() + " force: " + forceA + ", protection: " + protectionA);
         LoggerUtil.log(b.getName() + " force: " + forceB + ", protection: " + protectionB);
 
+        if (forceA == forceB) {
+            LoggerUtil.log("It's a draw! No damage dealt.");
+            return;
+        }
+
         if (forceA > forceB) {
-            int damage = calculateDamage(forceA, forceB, protectionB);
+            int damage = calculateDamage(forceA, protectionB);
             b.reduceHealth(damage);
             LoggerUtil.log(a.getName() + " wins! " + b.getName() + " loses " + damage + " HP.");
-        } else if (forceB > forceA) {
-            int damage = calculateDamage(forceB, forceA, protectionA);
+        } else {
+            int damage = calculateDamage(forceB, protectionA);
             a.reduceHealth(damage);
             LoggerUtil.log(b.getName() + " wins! " + a.getName() + " loses " + damage + " HP.");
-        } else {
-            LoggerUtil.log("It's a draw! No damage dealt.");
         }
 
         LoggerUtil.log("💥 Final health: " + a.getName() + " = " + a.getHealth() + ", " + b.getName() + " = " + b.getHealth());
     }
 
-    private static int calculateDamage(int attackerForce, int defenderForce, int defenderProtection) {
-        int rawDamage = attackerForce - defenderForce;
-        return Math.max(0, defenderProtection > 0 ? rawDamage / defenderProtection : rawDamage);
+    /**
+     * Вычисляет урон как разницу между силой атаки и защитой,
+     * минимальный урон — 1.
+     */
+    private static int calculateDamage(int attackerForce, int defenderProtection) {
+        int rawDamage = attackerForce - defenderProtection;
+        if (rawDamage <= 0) {
+            return 1; // Минимальный урон всегда 1
+        }
+        return rawDamage;
     }
 }
+
 

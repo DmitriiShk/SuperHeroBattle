@@ -1,10 +1,5 @@
 package com.superherobattle.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@Getter
-@AllArgsConstructor
 public enum ProtectionType {
     ARMOR("Armor", 10),
     SUIT("Suit", 3),
@@ -12,6 +7,21 @@ public enum ProtectionType {
 
     private final String name;
     private final int level;
+
+    ProtectionType(String name, int level) {
+        this.name = name;
+        this.level = level;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getLevel() {
+        return level;
+    }
 }
+
+
 
 

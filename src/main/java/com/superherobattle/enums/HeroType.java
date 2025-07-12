@@ -1,10 +1,5 @@
 package com.superherobattle.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@Getter
-@AllArgsConstructor
 public enum HeroType {
     IRON_MAN("Iron Man", WeaponType.REPULSOR_BLAST, ProtectionType.ARMOR, 8, 10),
     SPIDER_MAN("Spider-Man", WeaponType.WEB_SHOOTER, ProtectionType.SUIT, 6, 3),
@@ -18,6 +13,36 @@ public enum HeroType {
     private final ProtectionType protectionType;
     private final int baseForce;
     private final int baseDefense;
+
+    HeroType(String displayName, WeaponType weaponType, ProtectionType protectionType, int baseForce, int baseDefense) {
+        this.displayName = displayName;
+        this.weaponType = weaponType;
+        this.protectionType = protectionType;
+        this.baseForce = baseForce;
+        this.baseDefense = baseDefense;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public WeaponType getWeaponType() {
+        return weaponType;
+    }
+
+    public ProtectionType getProtectionType() {
+        return protectionType;
+    }
+
+    public int getBaseForce() {
+        return baseForce;
+    }
+
+    public int getBaseDefense() {
+        return baseDefense;
+    }
 }
+
+
 
 
