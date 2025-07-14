@@ -2,15 +2,17 @@ package com.superherobattle;
 
 import com.superherobattle.characters.EvilCreature;
 import com.superherobattle.characters.Superhero;
+import com.superherobattle.characters.Wizard;
 import com.superherobattle.enums.HeroType;
 import com.superherobattle.enums.VillainType;
 import com.superherobattle.items.Protection;
 import com.superherobattle.items.Weapon;
 import com.superherobattle.logic.Battle;
+import com.superherobattle.util.BattleUtils;
 
 public class Main {
     public static void main(String[] args) {
-        // Супергерои
+        // --- Супергерои ---
         Superhero ironMan = new Superhero(
                 HeroType.IRON_MAN,
                 new Weapon(
@@ -39,29 +41,42 @@ public class Main {
                 )
         );
 
-        // Злодеи
+        // --- Злодеи ---
         EvilCreature thanos = new EvilCreature(VillainType.THANOS);
         EvilCreature loki = new EvilCreature(VillainType.LOKI);
 
-        // Представление
-        System.out.println("--- Супергерои ---");
-        ironMan.introduce();
-        ironMan.characterInfo();
+        // --- Маг (Wizard) ---
+        Wizard gandalf = new Wizard("Gandalf", 4, 3, 2); // level = 2 → +20 HP, +20% силы
 
-        spiderMan.introduce();
+        System.out.println("\n--- МАГ ВСТУПАЕТ В ИГРУ ---");
+        gandalf.introduce();
+
+        // Усиление и лечение героев
+        gandalf.increaseForce(ironMan);
+        gandalf.increaseForce(spiderMan);
+        gandalf.heal(ironMan);
+        gandalf.heal(spiderMan);
+
+        // --- Представление ---
+        System.out.println("\n--- Супергерои после усиления ---");
+        ironMan.characterInfo();
         spiderMan.characterInfo();
 
         System.out.println("\n--- Злодеи ---");
         thanos.introduce();
         thanos.characterInfo();
-
         loki.introduce();
         loki.characterInfo();
 
-        // Сражение
+        // --- Сражения ---
         System.out.println("\n--- СРАЖЕНИЕ ---");
         Battle.fight(ironMan, thanos);
         Battle.fight(spiderMan, loki);
+
+        // --- Случайная битва ---
+        System.out.println("\n--- СЛУЧАЙНАЯ БИТВА ---");
+        BattleUtils.startRandomBattle();
     }
 }
+
 

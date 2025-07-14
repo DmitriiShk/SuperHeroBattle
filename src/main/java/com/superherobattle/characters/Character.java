@@ -20,6 +20,14 @@ public abstract class Character {
         System.out.println("Hi, I am a " + this.getClass().getSimpleName() + ". My name is " + name + ".");
     }
 
+    public void setHealth(int health) {
+        this.health = Math.max(0, Math.min(health, 100));
+    }
+
+    public void healBy(int amount) {
+        this.health = Math.min(this.health + amount, 100);
+    }
+
     public void characterInfo() {
         System.out.println("🧾 Character Info:");
         System.out.println("Type: " + this.getClass().getSimpleName());

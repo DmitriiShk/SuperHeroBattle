@@ -40,6 +40,14 @@ public class Superhero extends Character {
         this.protection = protection;
     }
 
+    public void setForce(int force) {
+        int weaponForce = (weapon != null) ? weapon.getForce() : 0;
+        int newBaseForce = force - weaponForce;
+        if (newBaseForce < 0) newBaseForce = 0;
+
+        type.setBaseForce(newBaseForce);
+    }
+
     @Override
     public int countForce() {
         return type.getBaseForce() + (weapon != null ? weapon.getForce() : 0);
@@ -49,6 +57,8 @@ public class Superhero extends Character {
     public int countProtection() {
         return type.getBaseDefense() + (protection != null ? protection.getLevel() : 0);
     }
+
+
 }
 
 

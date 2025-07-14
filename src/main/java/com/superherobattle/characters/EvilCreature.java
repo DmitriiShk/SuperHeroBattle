@@ -8,10 +8,19 @@ public class EvilCreature extends Character {
     private VillainType type;
     private Weapon weapon;
     private Protection protection;
+    private boolean isAngry = false;
 
     public EvilCreature(VillainType type) {
         super(type.getDisplayName());
         this.type = type;
+    }
+
+    public boolean isAngry() {
+        return isAngry;
+    }
+
+    public void setAngry(boolean angry) {
+        isAngry = angry;
     }
 
     public VillainType getType() {
@@ -42,7 +51,8 @@ public class EvilCreature extends Character {
     public int countForce() {
         int baseForce = type.getBaseForce();
         int weaponForce = (weapon != null) ? weapon.getForce() : 0;
-        return baseForce + weaponForce;
+        int force = baseForce + weaponForce;
+        return isAngry ? force * 2 : force; //Сила удваивается если злодей сильно зол
     }
 
     @Override
@@ -51,4 +61,11 @@ public class EvilCreature extends Character {
         int protectionLevel = (protection != null) ? protection.getLevel() : 0;
         return baseDefense + protectionLevel;
     }
+
+    @Override
+    public void reduceHealth(int amount) {
+        int damage = isAngry ? amount * 2 : amount; //Урон удваивается если злодей сильно зол
+        super.reduceHealth(damage);
+    }
+
 }

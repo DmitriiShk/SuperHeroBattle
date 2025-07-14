@@ -11,8 +11,8 @@ public enum HeroType {
     private final String displayName;
     private final WeaponType weaponType;
     private final ProtectionType protectionType;
-    private final int baseForce;
-    private final int baseDefense;
+    private int baseForce;
+    private int baseDefense;
 
     HeroType(String displayName, WeaponType weaponType, ProtectionType protectionType, int baseForce, int baseDefense) {
         this.displayName = displayName;
@@ -38,10 +38,19 @@ public enum HeroType {
         return baseForce;
     }
 
+    public void setBaseForce(int baseForce) {
+        this.baseForce = baseForce;
+    }
+
     public int getBaseDefense() {
         return baseDefense;
     }
+
+    public void setBaseDefense(int baseDefense) {
+        this.baseDefense = baseDefense;
+    }
 }
+
 
 
 
